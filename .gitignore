@@ -1,0 +1,23 @@
+# Ignore the .env file 
+.env
+
+# Ignore the ipynb_checkpoints file
+.ipynb_checkpoints
+
+# Ignore the .vscode file
+.vscode
+
+# Ignore the .idea file
+.idea
+
+# Ignore the .venv file
+.venv
+
+# Ignore the chat_histories folder
+chat_histories
+
+# Ignore the .gradio folder
+.gradio
+
+# Ignore the .langchain folder
+.langchain
