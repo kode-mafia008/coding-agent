@@ -21,3 +21,21 @@ chat_histories
 
 # Ignore the .langchain folder
 .langchain
+
+# Ignore the .next folder
+.next
+
+# Ignore the .next/types folder
+.next/types
+
+# Ignore the .next/cache folder
+.next/cache
+
+# Ignore the .next/build folder
+.next/build
+
+# Ignore the .next/standalone folder
+.next/standalone
+
+# Ignore the node modules folder
+frontend/node_modules
