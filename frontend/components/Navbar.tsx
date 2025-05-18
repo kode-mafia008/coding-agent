@@ -1,11 +1,16 @@
+'use client';
+
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { 
   ChatBubbleLeftRightIcon, 
   PhoneIcon, 
   Cog6ToothIcon, 
-  InformationCircleIcon 
+  InformationCircleIcon,
+  SunIcon,
+  MoonIcon
 } from '@heroicons/react/24/outline';
+import { useAppContext } from './Providers';
 
 const navigation = [
   { name: 'Chat', href: '/', icon: ChatBubbleLeftRightIcon },
@@ -16,6 +21,7 @@ const navigation = [
 
 export default function Navbar() {
   const pathname = usePathname();
+  const { darkMode, toggleDarkMode } = useAppContext();
 
   return (
     <nav className="bg-white dark:bg-gray-800 shadow-md">
@@ -29,6 +35,19 @@ export default function Navbar() {
               </span>
             </Link>
           </div>
+          
+          {/* Dark Mode Toggle */}
+          <button
+            onClick={toggleDarkMode}
+            className="ml-4 p-2 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+            aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+          >
+            {darkMode ? (
+              <SunIcon className="h-5 w-5 text-yellow-500" />
+            ) : (
+              <MoonIcon className="h-5 w-5 text-gray-600" />
+            )}
+          </button>
           
           {/* Navigation */}
           <div className="hidden md:block">

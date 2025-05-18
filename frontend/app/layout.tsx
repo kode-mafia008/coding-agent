@@ -1,10 +1,10 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { JetBrains_Mono } from 'next/font/google';
 import Navbar from '@/components/Navbar';
 import { Providers } from '@/components/Providers';
+import { jetBrainsMono } from '@/components/FontLoader';
 
-const jetBrainsMono = JetBrains_Mono({ subsets: ['latin'] });
+// Font is loaded from FontLoader component
 
 export const metadata: Metadata = {
   title: 'Coding Agent Assistant',
@@ -18,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={jetBrainsMono.className}>
+      <body className={`${jetBrainsMono.variable} font-mono`}>
         <Providers>
           <div className="min-h-screen flex flex-col">
             <Navbar />

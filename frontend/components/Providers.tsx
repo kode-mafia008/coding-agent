@@ -73,8 +73,32 @@ export const Providers = ({ children }: { children: ReactNode }) => {
   );
 
   const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
+    const newDarkMode = !darkMode;
+    setDarkMode(newDarkMode);
+    
+    // Apply dark mode class to the html element for Tailwind dark mode
+    if (typeof document !== 'undefined') {
+      if (newDarkMode) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    }
   };
+
+  // Initial setup of dark mode class on mount
+  React.useEffect(() => {
+    if (typeof document !== 'undefined' && darkMode) {
+      document.documentElement.classList.add('dark');
+    }
+    
+    // Cleanup when component unmounts
+    return () => {
+      if (typeof document !== 'undefined') {
+        document.documentElement.classList.remove('dark');
+      }
+    };
+  }, []);
 
   return (
     <AppContext.Provider
@@ -89,9 +113,7 @@ export const Providers = ({ children }: { children: ReactNode }) => {
         toggleDarkMode,
       }}
     >
-      <div className={darkMode ? 'dark' : ''}>
-        {children}
-      </div>
+      {children}
     </AppContext.Provider>
   );
 };
